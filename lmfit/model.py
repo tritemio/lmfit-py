@@ -490,6 +490,10 @@ class Model(object):
             else:
                 self.components.extend(other.components)
                 self.param_hints.update(other.param_hints)
+                if self.prefix !=  other.prefix:
+                    warnings.warn(('Adding composite models with different '
+                                   'prefixes. Using prefix "%s"') %\
+                                   self.prefix, UserWarning)
             return self
         else:
             # make new composite Model, add self and other as components
